@@ -59,6 +59,18 @@ enum Telecommand_t : uint8_t {
     RAMANLEN = 56,
     SETMEASURETYPE = 57,
 
+    // RATS Commands and Settings
+    RATSSAMPERATESECS = 60,     // Set data sampling/reporting rate, param0: [1,60]
+    RATSDATAPROCTYPE = 61,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
+    RATSTSENONOFF = 61,         // Disable/enable TSEN, param0: 0=off, 1=on
+    RATSRS41ONOFF = 62,         // Disable/enable RS41, param0: 0=off, 1=on
+    RATSRS41REGEN = 63,         // Triggers RS41 regeneration
+    RATSDEPLOY = 64,            // Deploy ECU, param0: #revs, param1: speed (passed through to MCB)
+    RATSRETRACT = 65,           // Retract ECU, param0: #revs, param1: speed (passed through to MCB)
+    RATSHOME = 66,              // Home the level wind (passed through to MCB)
+    RATSMOTORLIMITS = 67,       // MCB motor limits  (passed through to MCB) param0: current limit, param1: torque limit
+    RATSMOTORRESET = 68,        // Reset MCB motor controllers  (passed through to MCB)
+
     // LPC Settings
     SETMODE = 100, // Expects mode enum
     SETSAMPLE = 101, // Number of samples per cycle
