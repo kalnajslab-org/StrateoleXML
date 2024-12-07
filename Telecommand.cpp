@@ -80,6 +80,27 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case CURRLIMITS:
         if (!Get_float(mcbParam.currLimits,2)) return false;
         break;
+    // RATS Parameters ------------------------------------
+    case RATSSAMPERATESECS:
+        break;
+    case RATSDATAPROCTYPE:
+        break;
+    case RATSTSENONOFF:
+        break;
+    case RATSRS41ONOFF:
+        break;
+    case RATSRS41REGEN:
+        break;
+    case RATSDEPLOY:
+        break;
+    case RATSRETRACT:
+        break;
+    case RATSHOME:
+        break;
+    case RATSMOTORLIMITS:
+        break;
+    case RATSMOTORRESET:
+        break;
     // LPC Parameters -------------------------------------
     case SETSAMPLE:
         if (!Get_uint16(&(lpcParam.samples),1)) return false;

@@ -20,6 +20,7 @@ char inst_ids[4][8] = {"FLOATS", "RACHUTS", "LPC", "RATS"};
 // global structs for received parameters
 DIB_Param_t dibParam = {0};
 PIB_Param_t pibParam = {0};
+RATS_Param_t ratsParam = {0};
 LPC_Param_t lpcParam = {0};
 MCB_Param_t mcbParam = {0};
 PU_Param_t puParam = {0};
