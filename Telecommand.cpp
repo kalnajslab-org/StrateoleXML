@@ -42,6 +42,10 @@ TCParseStatus_t XMLReader::GetTelecommand()
 // get the telecommand parameters, if any
 bool XMLReader::ParseTelecommand(uint8_t telecommand)
 {
+    uint8_t val_uint8;
+
+    // Only telecommands with parameters are processed here; 
+    // they are decoded into the appropriate params global variable.
     switch (telecommand) {
     // MCB Parameters -------------------------------------
     case DEPLOYx:
@@ -82,24 +86,30 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         break;
     // RATS Parameters ------------------------------------
     case RATSSAMPERATESECS:
+        if (!Get_uint16(&(ratsParam.sampleRateSecs),1)) return false;
         break;
     case RATSDATAPROCTYPE:
+        if (!Get_uint8(&(ratsParam.dataProcMethod),1)) return false;
         break;
     case RATSTSENONOFF:
+        if (!Get_uint8(&val_uint8,1)) return false;
+        ratsParam.tsenOn = val_uint8;
         break;
     case RATSRS41ONOFF:
-        break;
-    case RATSRS41REGEN:
+        if (!Get_uint8(&val_uint8,1)) return false;
+        ratsParam.tsenOn = val_uint8;
         break;
     case RATSDEPLOY:
+        if (!Get_uint16(&(ratsParam.deployRevs),1)) return false;
+        if (!Get_uint16(&(ratsParam.deploySpeed),1)) return false;
         break;
     case RATSRETRACT:
-        break;
-    case RATSHOME:
+        if (!Get_uint16(&(ratsParam.retractRevs),1)) return false;
+        if (!Get_uint16(&(ratsParam.retractSpeed),1)) return false;
         break;
     case RATSMOTORLIMITS:
-        break;
-    case RATSMOTORRESET:
+        if (!Get_uint16(&(ratsParam.motorCurrentLimit),1)) return false;
+        if (!Get_uint16(&(ratsParam.motorTorqueLimit),1)) return false;
         break;
     // LPC Parameters -------------------------------------
     case SETSAMPLE:

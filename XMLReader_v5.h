@@ -76,6 +76,7 @@ struct GPSData_t {
 // global structs for received parameters
 extern DIB_Param_t dibParam;
 extern PIB_Param_t pibParam;
+extern RATS_Param_t ratsParam;
 extern LPC_Param_t lpcParam;
 extern MCB_Param_t mcbParam;
 extern PU_Param_t puParam;
