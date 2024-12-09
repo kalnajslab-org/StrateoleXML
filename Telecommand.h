@@ -70,6 +70,7 @@ enum Telecommand_t : uint8_t {
     RATSHOME = 67,              // Home the level wind (passed through to MCB)
     RATSMOTORLIMITS = 68,       // MCB motor limits  (passed through to MCB) param0: current limit, param1: torque limit
     RATSMOTORRESET = 69,        // Reset MCB motor controllers  (passed through to MCB)
+    GETRATSEEPROM = 70,         // Fetch the mainboard EEPROM
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
