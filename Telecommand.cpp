@@ -91,14 +91,6 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case RATSDATAPROCTYPE:
         if (!Get_uint8(&(ratsParam.dataProcMethod),1)) return false;
         break;
-    case RATSTSENONOFF:
-        if (!Get_uint8(&val_uint8,1)) return false;
-        ratsParam.tsenOn = val_uint8;
-        break;
-    case RATSRS41ONOFF:
-        if (!Get_uint8(&val_uint8,1)) return false;
-        ratsParam.tsenOn = val_uint8;
-        break;
     case RATSDEPLOY:
         if (!Get_uint16(&(ratsParam.deployRevs),1)) return false;
         if (!Get_uint16(&(ratsParam.deploySpeed),1)) return false;

@@ -62,15 +62,12 @@ enum Telecommand_t : uint8_t {
     // RATS Commands and Settings
     RATSSAMPERATESECS = 60,     // Set data sampling/reporting rate, param0: [1,60]
     RATSDATAPROCTYPE = 61,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
-    RATSTSENONOFF = 62,         // Disable/enable TSEN, param0: 0=off, 1=on
-    RATSRS41ONOFF = 63,         // Disable/enable RS41, param0: 0=off, 1=on
-    RATSRS41REGEN = 64,         // Triggers RS41 regeneration
-    RATSDEPLOY = 65,            // Deploy ECU, param0: #revs, param1: speed (passed through to MCB)
-    RATSRETRACT = 66,           // Retract ECU, param0: #revs, param1: speed (passed through to MCB)
-    RATSHOME = 67,              // Home the level wind (passed through to MCB)
-    RATSMOTORLIMITS = 68,       // MCB motor limits  (passed through to MCB) param0: current limit, param1: torque limit
-    RATSMOTORRESET = 69,        // Reset MCB motor controllers  (passed through to MCB)
-    GETRATSEEPROM = 70,         // Fetch the mainboard EEPROM
+    RATSDEPLOY = 62,            // Deploy ECU, param0: #revs, param1: speed (passed through to MCB)
+    RATSRETRACT = 63,           // Retract ECU, param0: #revs, param1: speed (passed through to MCB)
+    RATSHOME = 64,              // Home the level wind (passed through to MCB)
+    RATSMOTORLIMITS = 65,       // MCB motor limits  (passed through to MCB) param0: current limit, param1: torque limit
+    RATSMOTORRESET = 66,        // Reset MCB motor controllers  (passed through to MCB)
+    GETRATSEEPROM = 67,         // Fetch the mainboard EEPROM
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -86,7 +83,6 @@ enum Telecommand_t : uint8_t {
     SETSAMPLEAVG = 110, // Values to average from PHA
     // IDs 111-115 are defined in TCMessage.py, but not here
     SETPHA = 116, // Pulse height analyzer parameters
-    REGENRS41 = 117, // Initiate an RS41 regeneration
 
     // RACHUTS Commands and Settings
     SETAUTO = 130,
@@ -160,8 +156,6 @@ struct PIB_Param_t {
 struct RATS_Param_t {
     uint16_t sampleRateSecs;
     uint8_t dataProcMethod;      // 0==none, 1==avg, 2==stats(avg,min,max,stddev)
-    bool tsenOn;
-    bool rs41On;
     uint16_t deployRevs;
     uint16_t deploySpeed;
     uint16_t retractRevs;
