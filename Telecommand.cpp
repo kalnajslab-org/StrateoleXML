@@ -99,10 +99,6 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_uint16(&(ratsParam.retractRevs),1)) return false;
         if (!Get_uint16(&(ratsParam.retractSpeed),1)) return false;
         break;
-    case RATSMOTORLIMITS:
-        if (!Get_uint16(&(ratsParam.motorCurrentLimit),1)) return false;
-        if (!Get_uint16(&(ratsParam.motorTorqueLimit),1)) return false;
-        break;
     // LPC Parameters -------------------------------------
     case SETSAMPLE:
         if (!Get_uint16(&(lpcParam.samples),1)) return false;

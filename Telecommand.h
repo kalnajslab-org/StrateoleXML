@@ -64,10 +64,7 @@ enum Telecommand_t : uint8_t {
     RATSDATAPROCTYPE = 61,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
     RATSDEPLOY = 62,            // Deploy ECU, param0: #revs, param1: speed (passed through to MCB)
     RATSRETRACT = 63,           // Retract ECU, param0: #revs, param1: speed (passed through to MCB)
-    RATSHOME = 64,              // Home the level wind (passed through to MCB)
-    RATSMOTORLIMITS = 65,       // MCB motor limits  (passed through to MCB) param0: current limit, param1: torque limit
-    RATSMOTORRESET = 66,        // Reset MCB motor controllers  (passed through to MCB)
-    GETRATSEEPROM = 67,         // Fetch the mainboard EEPROM
+    GETRATSEEPROM = 64,         // Fetch the mainboard EEPROM
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -160,8 +157,6 @@ struct RATS_Param_t {
     uint16_t deploySpeed;
     uint16_t retractRevs;
     uint16_t retractSpeed;
-    uint16_t motorCurrentLimit;
-    uint16_t motorTorqueLimit;
 };
 struct LPC_Param_t {
     uint16_t samples;
