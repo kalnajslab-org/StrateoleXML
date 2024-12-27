@@ -156,9 +156,9 @@ struct RATS_Param_t {
     uint16_t sampleRateSecs;
     uint8_t dataProcMethod;      // 0==none, 1==avg, 2==stats(avg,min,max,stddev)
     uint16_t deployRevs;
-    uint16_t deploySpeed;
+    uint16_t deploy_velocity;
     uint16_t retractRevs;
-    uint16_t retractSpeed;
+    uint16_t retract_velocity;
 };
 struct LPC_Param_t {
     uint16_t samples;
