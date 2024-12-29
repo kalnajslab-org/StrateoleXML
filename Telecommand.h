@@ -153,11 +153,11 @@ struct PIB_Param_t {
 };
 
 struct RATS_Param_t {
-    uint16_t sampleRateSecs;
-    uint8_t dataProcMethod;      // 0==none, 1==avg, 2==stats(avg,min,max,stddev)
-    uint16_t deployRevs;
+    uint16_t sample_rate_secs;
+    uint8_t data_proc_method;      // 0==none, 1==avg, 2==stats(avg,min,max,stddev)
+    uint16_t deploy_revs;
     uint16_t deploy_velocity;
-    uint16_t retractRevs;
+    uint16_t retract_revs;
     uint16_t retract_velocity;
 };
 struct LPC_Param_t {
