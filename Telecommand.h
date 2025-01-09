@@ -63,9 +63,7 @@ enum Telecommand_t : uint8_t {
     // RATS Commands and Settings
     RATSSAMPERATESECS = 60,     // Set data sampling/reporting rate, param0: [1,60]
     RATSDATAPROCTYPE = 61,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
-    RATSDEPLOY = 62,            // Deploy ECU, param0: #revs, param1: speed (passed through to MCB)
-    RATSRETRACT = 63,           // Retract ECU, param0: #revs, param1: speed (passed through to MCB)
-    GETRATSEEPROM = 64,         // Fetch the mainboard EEPROM
+    GETRATSEEPROM = 62,         // Fetch the mainboard EEPROM
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
