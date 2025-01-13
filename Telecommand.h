@@ -63,7 +63,9 @@ enum Telecommand_t : uint8_t {
     // RATS Commands and Settings
     RATSSAMPERATESECS = 60,     // Set data sampling/reporting rate, param0: [1,60]
     RATSDATAPROCTYPE = 61,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
-    GETRATSEEPROM = 62,         // Fetch the mainboard EEPROM
+    RATSGETEEPROM = 62,         // Fetch the mainboard EEPROM
+    RATSREALTIMEMCBON = 63,     // Enable real-time MCB mode
+    RATSREALTIMEMCBOFF = 64,    // Disable real-time MCB mode
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
