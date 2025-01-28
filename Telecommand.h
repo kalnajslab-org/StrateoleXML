@@ -83,6 +83,7 @@ enum Telecommand_t : uint8_t {
     SETPHA = 116, // Pulse height analyzer parameters
     REGENRS41 = 117, // Initiate an RS41 regeneration
     SETFLOW = 118, // set the BEMF setpoint for both pumps
+    SETPUMPTEMP = 119, // set the minimum temperature for the pumps
 
     // RACHUTS Commands and Settings
     SETAUTO = 130,
@@ -178,6 +179,7 @@ struct LPC_Param_t {
     uint16_t phaHiGainOffset;
     uint16_t phaLoGainOffset;
     float flowSetpoint;
+    float pumpMinTemp;
 };
 
 struct MCB_Param_t {

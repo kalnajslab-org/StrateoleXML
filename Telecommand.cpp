@@ -124,7 +124,10 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case SETFLOW:
         if (!Get_float(&(lpcParam.flowSetpoint),1)) return false;
         break;
-        
+    case SETPUMPTEMP:
+        if (!Get_float(&(lpcParam.pumpMinTemp),1)) return false;
+        break;
+
     // DIB Parameters -------------------------------------
     case FTRONTIME:
         if (!Get_uint16(&(dibParam.ftrOnTime),1)) return false;
