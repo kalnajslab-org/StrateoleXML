@@ -82,6 +82,7 @@ enum Telecommand_t : uint8_t {
     // IDs 111-115 are defined in TCMessage.py, but not here
     SETPHA = 116, // Pulse height analyzer parameters
     REGENRS41 = 117, // Initiate an RS41 regeneration
+    SETFLOW = 118, // set the BEMF setpoint for both pumps
 
     // RACHUTS Commands and Settings
     SETAUTO = 130,
@@ -176,6 +177,7 @@ struct LPC_Param_t {
     uint16_t phaHiGainThreshold;
     uint16_t phaHiGainOffset;
     uint16_t phaLoGainOffset;
+    float flowSetpoint;
 };
 
 struct MCB_Param_t {
