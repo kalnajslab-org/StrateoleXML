@@ -34,7 +34,6 @@
 #include "TimeLib.h"
 
 #define TMBUF_MAXSIZE   8192
-//#define LOG
 
 enum StateFlag_t {
     UNKN,
@@ -46,8 +45,8 @@ enum StateFlag_t {
 
 class XMLWriter {
 public:
-#ifdef LOG
-    XMLWriter(Print* stream, Print* log, Instrument_t inst);
+#ifdef XMLDEBUG
+    XMLWriter(Print* stream, Instrument_t inst,  Stream * log);
 #else
     XMLWriter(Print* stream, Instrument_t inst);
 #endif

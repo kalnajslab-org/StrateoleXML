@@ -37,8 +37,8 @@ char Zproto[] = "1.0";
 // Constructor and reset
 // --------------------------------------------------------
 
-#ifdef LOG
-XMLWriter::XMLWriter(Print* stream, Print* log, Instrument_t inst)
+#ifdef XMLDEBUG
+XMLWriter::XMLWriter(Print* stream, Instrument_t inst,  Stream* log)
 {
     _log = log;
     _log->println("Written messages with be logged.");
@@ -201,7 +201,7 @@ void XMLWriter::writeCRC()
     _stream->print("<CRC>");
     _stream->print(tx_crc, DEC);
     _stream->print("</CRC>\n");
-#ifdef LOG
+#ifdef XMLDEBUG
     _log->print("<CRC>");
     _log->print(tx_crc, DEC);
     _log->print("</CRC>\n");
@@ -250,8 +250,13 @@ inline void XMLWriter::writeAndUpdateCRC(uint8_t data)
     uint8_t lsb = tx_crc & 255;
     uint16_t c;
     _stream->write(data);
-#ifdef LOG
-    _log->write(data);
+#ifdef XMLDEBUG
+    // print regular characters if alphanumeric or newline or tab, else print in hex
+    if ((data >= 32 && data <= 126) || data == 10 || data == 9) {
+        _log->write(data);
+    } else {
+        _log->print(data, HEX);
+    }
 #endif
     c = data ^ msb;
     c ^= (c >> 4);
@@ -309,7 +314,7 @@ void XMLWriter::S()
 void XMLWriter::RA()
 {
     if (RACHUTS != instrument) { //Writer does not have inst enum
-#ifdef LOG
+#ifdef XMLDEBUG
         _log->print("Invalid devId: ");
         _log->println(inst_ids[instrument]);
 #endif
@@ -364,7 +369,7 @@ void XMLWriter::TM()
     String buf = String(num_tm_elements);
     writeNode("Length", buf.c_str());
     tagClose("TM");
-#ifdef LOG
+#ifdef XMLDEBUG
     _log->print("Number of items in telemetry buffer: ");
     _log->println(num_tm_elements);
 #endif
@@ -403,7 +408,7 @@ void XMLWriter::sendBin()
     // Calling function does proper input check
     crcReset();
     _stream->print("START");
-#ifdef LOG
+#ifdef XMLDEBUG
     _log->print("START");
 #endif
 
@@ -421,14 +426,12 @@ void XMLWriter::sendBin()
     _stream->write((byte)send);
 
     _stream->print("END");
-#ifdef LOG
-    _log->println();
-    _log->println(binCrc, HEX);
-    _log->println("END");
+#ifdef XMLDEBUG
+    _log->print(binCrc, HEX);
+    _log->print("END\n");
 #endif
 
     tm_buff_sent = true;
-
     return;
 }
 
@@ -440,7 +443,7 @@ void XMLWriter::sendEmptyBin()
     // Calling function does proper input check
     crcReset();
     _stream->print("START");
-#ifdef LOG
+#ifdef XMLDEBUG
     _log->print("START");
 #endif
 
@@ -451,10 +454,9 @@ void XMLWriter::sendEmptyBin()
 
     //end
     _stream->print("END");
-#ifdef LOG
-    _log->println();
-    _log->println(binCrc, HEX);
-    _log->println("END");
+#ifdef XMLDEBUG
+    _log->print(binCrc, HEX);
+    _log->print("END\n");
 #endif
 }
 
