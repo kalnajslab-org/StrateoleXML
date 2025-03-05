@@ -49,6 +49,8 @@ enum Telecommand_t : uint8_t {
     USELIMITS = 17,
     GETMCBEEPROM = 18,
     GETMCBVOLTS = 19,
+    CONTROLLERSON = 20,
+    CONTROLLERSOFF = 21,
 
     // DIB Commands and Settings
     GOFTRFLIGHT = 50, // go to the flight FTR sub-mode
@@ -65,10 +67,8 @@ enum Telecommand_t : uint8_t {
     RATSGETEEPROM = 61,         // Fetch the mainboard EEPROM
     RATSREALTIMEMCBON = 62,     // Enable real-time MCB reporting
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
-    RATSMCBCTRLSON = 64,        // MCB motor controllers on
-    RATSMCBCTRLSOFF = 65,       // MCB motor controllers off
-    RATSLORATXTESTON = 66,      // Enable LoRa TX test mode
-    RATSLORATXTESTOFF = 67,     // Disable LoRa TX test mode
+    RATSLORATXTESTON = 64,      // Enable LoRa TX test mode
+    RATSLORATXTESTOFF = 65,     // Disable LoRa TX test mode
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
