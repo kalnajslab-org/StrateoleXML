@@ -85,9 +85,6 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_float(mcbParam.currLimits,2)) return false;
         break;
     // RATS Parameters ------------------------------------
-    case RATSSAMPERATESECS:
-        if (!Get_uint16(&(ratsParam.sample_rate_secs),1)) return false;
-        break;
     case RATSDATAPROCTYPE:
         if (!Get_uint8(&(ratsParam.data_proc_method),1)) return false;
         break;

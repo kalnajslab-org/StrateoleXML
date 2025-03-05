@@ -61,11 +61,10 @@ enum Telecommand_t : uint8_t {
     SETMEASURETYPE = 57,
 
     // RATS Commands and Settings
-    RATSSAMPERATESECS = 60,     // Set data sampling/reporting rate, param0: [1,60]
-    RATSDATAPROCTYPE = 61,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
-    RATSGETEEPROM = 62,         // Fetch the mainboard EEPROM
-    RATSREALTIMEMCBON = 63,     // Enable real-time MCB mode
-    RATSREALTIMEMCBOFF = 64,    // Disable real-time MCB mode
+    RATSDATAPROCTYPE = 60,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
+    RATSGETEEPROM = 61,         // Fetch the mainboard EEPROM
+    RATSREALTIMEMCBON = 62,     // Enable real-time MCB reporting
+    RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -155,7 +154,6 @@ struct PIB_Param_t {
 };
 
 struct RATS_Param_t {
-    uint16_t sample_rate_secs;
     uint8_t data_proc_method;      // 0==none, 1==avg, 2==stats(avg,min,max,stddev)
     uint16_t deploy_revs;
     uint16_t deploy_velocity;
