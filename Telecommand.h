@@ -65,6 +65,10 @@ enum Telecommand_t : uint8_t {
     RATSGETEEPROM = 61,         // Fetch the mainboard EEPROM
     RATSREALTIMEMCBON = 62,     // Enable real-time MCB reporting
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
+    RATSMCBPOWON = 64,          // MCB power on
+    RATSMCBPOWOFF = 65,         // MCB power off
+    RATSLORATXTESTON = 66,      // Enable LoRa TX test mode
+    RATSLORATXTESTOFF = 67,     // Disable LoRa TX test mode
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
