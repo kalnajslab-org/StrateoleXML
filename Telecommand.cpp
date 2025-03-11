@@ -87,6 +87,9 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case RATSDATAPROCTYPE:
         if (!Get_uint8(&(ratsParam.data_proc_method),1)) return false;
         break;
+    case RATSECUTEMP:
+        if (!Get_float(&(ratsParam.ecu_tempC),1)) return false;
+        break;
     // LPC Parameters -------------------------------------
     case SETSAMPLE:
         if (!Get_uint16(&(lpcParam.samples),1)) return false;

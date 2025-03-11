@@ -69,6 +69,7 @@ enum Telecommand_t : uint8_t {
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
     RATSLORATXTESTON = 64,      // Enable LoRa TX test mode
     RATSLORATXTESTOFF = 65,     // Disable LoRa TX test mode
+    RATSECUTEMP = 66,           // Set the ECU temperature
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -163,6 +164,7 @@ struct RATS_Param_t {
     uint16_t deploy_velocity;
     uint16_t retract_revs;
     uint16_t retract_velocity;
+    float ecu_tempC;
 };
 struct LPC_Param_t {
     uint16_t samples;
