@@ -42,7 +42,6 @@ TCParseStatus_t XMLReader::GetTelecommand()
 // get the telecommand parameters, if any
 bool XMLReader::ParseTelecommand(uint8_t telecommand)
 {
-    uint8_t val_uint8;
 
     // Only telecommands with parameters are processed here; 
     // they are decoded into the appropriate params global variable.
