@@ -69,7 +69,9 @@ enum Telecommand_t : uint8_t {
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
     RATSLORATXTESTON = 64,      // Enable LoRa TX test mode
     RATSLORATXTESTOFF = 65,     // Disable LoRa TX test mode
-    RATSECUTEMP = 66,           // Set the ECU temperature
+    RATSECUTEMP = 66,           // Set the ECU temperature setpoint, param0: temperature in C
+    RATSECUPWRON = 67,          // Manual ECU power on
+    RATSECUPWROFF = 68,         // Manual ECU power off
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
