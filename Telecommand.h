@@ -72,8 +72,7 @@ enum Telecommand_t : uint8_t {
     RATSECUTEMP = 66,           // Set the ECU temperature setpoint, param0: temperature in C
     RATSECUPWRON = 67,          // Manual ECU power on
     RATSECUPWROFF = 68,         // Manual ECU power off
-    RATSRS41REGENON = 69,       // RS41 regeneration on. Command is sent to ECU; it will run the regen for a fixed time period.
-    RATSRS41REGENOFF = 70,      // RS41 regeneration off. Command is sent to ECU; it will stop the regen immediately.
+    RATSRS41REGEN = 69,         // RS41 regeneration on. Command is sent to ECU; it will put the RS41 in regen mode, which will timeout later.
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
