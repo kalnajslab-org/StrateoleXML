@@ -53,7 +53,7 @@ enum Telecommand_t : uint8_t {
     CONTROLLERSOFF = 21,
 
     // DIB Commands and Settings
-    GOFTRFLIGHT = 50, // go to the flight FTR sub-mode
+    GOFTRFLIGHT = 50, // go to the flight FTR sub-m+++=ode
     GOMCBFLIGHT = 51, // go to the flight MCB sub-mode
     FTRCYCLETIME = 52,
     FTRONTIME = 53,
@@ -72,6 +72,8 @@ enum Telecommand_t : uint8_t {
     RATSECUTEMP = 66,           // Set the ECU temperature setpoint, param0: temperature in C
     RATSECUPWRON = 67,          // Manual ECU power on
     RATSECUPWROFF = 68,         // Manual ECU power off
+    RATSRS41REGENON = 69,       // RS41 regeneration on. Command is sent to ECU; it will run the regen for a fixed time period.
+    RATSRS41REGENOFF = 70,      // RS41 regeneration off. Command is sent to ECU; it will stop the regen immediately.
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -168,6 +170,7 @@ struct RATS_Param_t {
     uint16_t retract_velocity;
     float ecu_tempC;
 };
+
 struct LPC_Param_t {
     uint16_t samples;
     uint16_t samplesToAverage;
