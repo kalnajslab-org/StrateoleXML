@@ -53,7 +53,7 @@ enum Telecommand_t : uint8_t {
     CONTROLLERSOFF = 21,
 
     // DIB Commands and Settings
-    GOFTRFLIGHT = 50, // go to the flight FTR sub-m+++=ode
+    GOFTRFLIGHT = 50, // go to the flight FTR sub-mode
     GOMCBFLIGHT = 51, // go to the flight MCB sub-mode
     FTRCYCLETIME = 52,
     FTRONTIME = 53,
