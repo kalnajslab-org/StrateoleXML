@@ -75,7 +75,7 @@ enum Telecommand_t : uint8_t {
     RATSRS41REGEN = 69,         // RS41 regeneration on. Command is sent to ECU; it will put the RS41 in regen mode, which will timeout later.
     RATSRS41ENON = 70,          // RS41 power on. Command is sent to ECU
     RATSRS41ENOFF = 71,         // RS41 power off. Command is sent to ECU
-    RATSTSENON = 72,            // TSEN power on. Command is sent to ECU
+    RATSTSENPOWON = 72,         // TSEN power on. Command is sent to ECU
     RATSTSENPOWOFF = 73,        // TSEN power off. Command is sent to ECU
 
     // LPC Settings
