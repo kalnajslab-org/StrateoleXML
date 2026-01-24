@@ -77,6 +77,7 @@ enum Telecommand_t : uint8_t {
     RATSRS41ENOFF = 71,         // RS41 power off. Command is sent to ECU
     RATSTSENPOWON = 72,         // TSEN power on. Command is sent to ECU
     RATSTSENPOWOFF = 73,        // TSEN power off. Command is sent to ECU
+    RATSECURS41METADATA = 74,   // Request RS41 metadata from ECU
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
