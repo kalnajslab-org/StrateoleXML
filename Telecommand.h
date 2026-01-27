@@ -78,6 +78,7 @@ enum Telecommand_t : uint8_t {
     RATSTSENPOWON = 72,         // TSEN power on. Command is sent to ECU
     RATSTSENPOWOFF = 73,        // TSEN power off. Command is sent to ECU
     RATSECURS41METADATA = 74,   // Request RS41 metadata from ECU
+    RATSPAIREDCEU = 75,         // Set the paired ECU ID, param0: ECU ID (uint8_t)
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -173,6 +174,7 @@ struct RATS_Param_t {
     uint16_t retract_revs;
     uint16_t retract_velocity;
     float ecu_tempC;
+    uint8_t paired_ecu;
 };
 
 struct LPC_Param_t {
