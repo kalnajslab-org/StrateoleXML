@@ -30,27 +30,27 @@ enum Telecommand_t : uint8_t {
     NULL_TELECOMMAND = 0,
 
     // MCB commands and parameters
-    DEPLOYx = 1,          // Reel out, param0: deploy length in revolutions
-    DEPLOYv = 2,          // Set deploy velocity, param0: deploy velocity in revs/sec
-    DEPLOYa = 3,          // Set deploy acceleration, param0: deploy acceleration in revs/sec^2
-    RETRACTx = 4,         // Reel in, param0: retract length in revolutions
-    RETRACTv = 5,         // Set retract velocity, param0: retract velocity in revs/sec
-    RETRACTa = 6,         // Set retract acceleration, param0: retract acceleration in revs/sec^2
-    DOCKx = 7,            // Set dock length, param0: dock length in revolutions
-    DOCKv = 8,            // Set dock velocity, param0: dock velocity in revs/sec
-    DOCKa = 9,            // Set dock acceleration, param0: dock acceleration in revs/sec^2
-    FULLRETRACT = 10,     // Full retract
-    CANCELMOTION = 11,    // Cancel any ongoing motion
-    ZEROREEL = 12,        // Zero the reel position
-    TEMPLIMITS = 13,      // Set temperature limits, param0-5: unknown0, unknown1, unknown2, unknown3, unknown4, unknown5
-    TORQUELIMITS = 14,    // Set torque limits, param0-1: unknown0, unknown1
-    CURRLIMITS = 15,      // Set current limits, param0-1: unknown0, unknown1
-    IGNORELIMITS = 16,    // Ignore limits
-    USELIMITS = 17,       // Enable limits
-    GETMCBEEPROM = 18,    // Get MCB EEPROM
-    GETMCBVOLTS = 19,     // Get MCB voltages
-    CONTROLLERSON = 20,   // Turn MCB controllers on
-    CONTROLLERSOFF = 21,  // Turn MCB controllers off
+    DEPLOYx = 1,
+    DEPLOYv = 2,
+    DEPLOYa = 3,
+    RETRACTx = 4,
+    RETRACTv = 5,
+    RETRACTa = 6,
+    DOCKx = 7,
+    DOCKv = 8,
+    DOCKa = 9,
+    FULLRETRACT = 10,
+    CANCELMOTION = 11,
+    ZEROREEL = 12,
+    TEMPLIMITS = 13,
+    TORQUELIMITS = 14,
+    CURRLIMITS = 15,
+    IGNORELIMITS = 16,
+    USELIMITS = 17,
+    GETMCBEEPROM = 18,
+    GETMCBVOLTS = 19,
+    CONTROLLERSON = 20,
+    CONTROLLERSOFF = 21,
 
     // DIB Commands and Settings
     GOFTRFLIGHT = 50, // go to the flight FTR sub-mode
