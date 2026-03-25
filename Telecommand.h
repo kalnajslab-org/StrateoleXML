@@ -63,7 +63,7 @@ enum Telecommand_t : uint8_t {
     SETMEASURETYPE = 57,
 
     // RATS Commands and Settings
-    RATSECUDECIMATEFACTOR = 60, // Set ECU decimate factor, must be > 0, param0: 1==none, 2=every second, etc.)
+    RATSECUDECIMATEFACTOR = 60, // Set ECU decimate factor, must be > 0, param0: 1==none, 2=every second one, etc.)
     RATSGETEEPROM = 61,         // Fetch the mainboard EEPROM
     RATSREALTIMEMCBON = 62,     // Enable real-time MCB reporting
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
@@ -169,7 +169,7 @@ struct PIB_Param_t {
 };
 
 struct RATS_Param_t {
-    uint8_t data_proc_method;      // 0==none, 1==avg, 2==stats(avg,min,max,stddev)
+    uint8_t decimate_factor;       // must be > 0; 1==none, 2==every second one, etc.
     uint16_t deploy_revs;
     uint16_t deploy_velocity;
     uint16_t retract_revs;
