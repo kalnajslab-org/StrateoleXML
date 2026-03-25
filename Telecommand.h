@@ -79,7 +79,7 @@ enum Telecommand_t : uint8_t {
     RATSTSENPOWOFF = 73,        // TSEN power off. Command is sent to ECU
     RATSECURS41METADATA = 74,   // Request RS41 metadata from ECU
     RATSPAIREDCEU = 75,         // Set the paired ECU ID, param0: ECU ID (uint8_t)
-    RATSGETVERSION = 76,        // Send a RATSTEXT TM with firmware version and build date/time
+    RATSINFO = 76,              // Send a RATSTEXT TM with firmware version and LoRa config
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
