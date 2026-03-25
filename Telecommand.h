@@ -63,7 +63,7 @@ enum Telecommand_t : uint8_t {
     SETMEASURETYPE = 57,
 
     // RATS Commands and Settings
-    RATSDATAPROCTYPE = 60,      // Set data processing method, param0: 0==none, 1==avg, 2==stats(avg,min,max,stddev)
+    RATSECUDECIMATEFACTOR = 60, // Set ECU decimate factor, must be > 0, param0: 1==none, 2=every second, etc.)
     RATSGETEEPROM = 61,         // Fetch the mainboard EEPROM
     RATSREALTIMEMCBON = 62,     // Enable real-time MCB reporting
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
