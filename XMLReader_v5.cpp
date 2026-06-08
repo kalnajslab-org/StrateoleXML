@@ -24,6 +24,7 @@ RATS_Param_t ratsParam = {0};
 LPC_Param_t lpcParam = {0};
 MCB_Param_t mcbParam = {0};
 PU_Param_t puParam = {0};
+RPU_Param_t rpuParam = {0};
 
 XMLReader::XMLReader(Stream * rxstream, Instrument_t inst)
 {

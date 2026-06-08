@@ -133,6 +133,12 @@ enum Telecommand_t : uint8_t {
     PURESET = 182,
     PUDOCKEDCONFIGS = 183,
 
+    // RPU commands and settings
+    RPUGOSTANDBY = 184,     // Go to STANDBY mode
+    RPUGOMEASURE = 185,     // Go to MEASUREMENT mode, param0: measurement period in seconds, param1: enable TSEN, param2: enable ROPC, param3: enable RS41
+    RPUSTATUSPERIOD = 186,  // Set the period for RPU status reports, in seconds. param0: period in seconds  
+    RPURESET = 187,         // Reboot the RPU. 
+
     // Generic instrument commands
     RESET_INST = 200,
     EXITERROR = 201,
@@ -233,6 +239,17 @@ struct PU_Param_t {
     uint8_t dockedTSEN;
     uint8_t dockedROPC;
     uint8_t dockedFLASH;
+};
+
+struct RPU_Param_t {
+    // GO_MEASUREMENT settings
+    uint16_t measPeriodSecs;
+    uint8_t enableTSEN;
+    uint8_t enableROPC;
+    uint8_t enableRS41;
+
+    // STATUSPERIOD setting
+    uint16_t statusPeriodSecs;
 };
 
 #endif /* TELECOMMAND_H */

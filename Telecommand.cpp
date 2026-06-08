@@ -227,6 +227,17 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_uint8(&(puParam.dockedROPC),1)) return false;
         if (!Get_uint8(&(puParam.dockedTSEN),1)) return false;
         break;
+    // RPU parameters --------------------------------------
+    case RPUGOMEASURE:
+        if (!Get_uint16(&(rpuParam.measPeriodSecs),1)) return false;
+        if (!Get_uint8(&(rpuParam.enableROPC),1)) return false;
+        if (!Get_uint8(&(rpuParam.enableTSEN),1)) return false;
+        if (!Get_uint8(&(rpuParam.enableRS41),1)) return false;
+        break;
+    case RPUSTATUSPERIOD:
+        if (!Get_uint16(&(rpuParam.statusPeriodSecs),1)) return false;
+        break;
+
     // Messages without parameters ------------------------
     default:
         break;

@@ -80,6 +80,7 @@ extern RATS_Param_t ratsParam;
 extern LPC_Param_t lpcParam;
 extern MCB_Param_t mcbParam;
 extern PU_Param_t puParam;
+extern RPU_Param_t rpuParam;
 
 class XMLReader {
 public:
