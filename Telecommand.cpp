@@ -207,32 +207,12 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_uint16(&(pibParam.dockedProfileTime),1)) return false;
         break;
     // PU parameters --------------------------------------
-    case PUWARMUPCONFIGS:
-        if (!Get_float(&(puParam.flashT),1)) return false;
-        if (!Get_float(&(puParam.heater1T),1)) return false;
-        if (!Get_float(&(puParam.heater2T),1)) return false;
-        if (!Get_uint8(&(puParam.flashPower),1)) return false;
-        if (!Get_uint8(&(puParam.tsenPower),1)) return false;
-        break;
-    case PUPROFILECONFIGS:
-        if (!Get_uint32(&(puParam.profileRate),1)) return false;
-        if (!Get_uint32(&(puParam.dwellRate),1)) return false;
-        if (!Get_uint8(&(puParam.profileFLASH),1)) return false;
-        if (!Get_uint8(&(puParam.profileROPC),1)) return false;
-        if (!Get_uint8(&(puParam.profileTSEN),1)) return false;
-        break;
-    case PUDOCKEDCONFIGS:
-        if (!Get_uint32(&(puParam.dockedRate),1)) return false;
-        if (!Get_uint8(&(puParam.dockedFLASH),1)) return false;
-        if (!Get_uint8(&(puParam.dockedROPC),1)) return false;
-        if (!Get_uint8(&(puParam.dockedTSEN),1)) return false;
+    case RPUBATTEMP:
+        if (!Get_float(&(rpuParam.batTemp),1)) return false;
         break;
     // RPU parameters --------------------------------------
-    case RPUGOMEASURE:
-        if (!Get_uint16(&(rpuParam.measDurationSecs),1)) return false;
+    case RPUCONFIG:
         if (!Get_uint16(&(rpuParam.measRateSecs),1)) return false;
-        break;
-    case RPUSELECT:
         if (!Get_uint8(&(rpuParam.enableROPC),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTDLAS),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTSEN),1)) return false;

@@ -100,46 +100,42 @@ enum Telecommand_t : uint8_t {
     SETPUMPTEMP = 119, // set the minimum temperature for the pumps
 
     // RACHUTS Commands and Settings
-    SETAUTO = 130,
-    SETMANUAL = 131,
-    SETSZAMIN = 132,
-    SETPROFILESIZE = 133,
-    SETDOCKAMOUNT = 134,
-    SETDWELLTIME = 135,
-    SETPROFILEPERIOD = 136,
-    SETNUMPROFILES = 137,
-    USESZATRIGGER = 138,
-    USETIMETRIGGER = 139,
-    SETTIMETRIGGER = 140,
-    SETDOCKOVERSHOOT = 141,
-    RETRYDOCK = 142,
-    GETPUSTATUS = 143,
-    PUPOWERON = 144,
-    PUPOWEROFF = 145,
-    MANUALPROFILE = 146,
-    OFFLOADPUPROFILE = 147,
-    SETPREPROFILETIME = 148,
-    SETPUWARMUPTIME = 149,
-    AUTOREDOCKPARAMS = 150,
-    SETMOTIONTIMEOUT = 151,
-    GETPIBEEPROM = 152,
-    DOCKEDPROFILE = 153,
-    STARTREALTIMEMCB = 154,
-    EXITREALTIMEMCB = 155,
-
-    // PU commands and settings
-    PUWARMUPCONFIGS = 180,
-    PUPROFILECONFIGS = 181,
-    PURESET = 182,
-    PUDOCKEDCONFIGS = 183,
+    SETAUTO = 130,              // Switch to autonomous flight mode (restarts flight mode)
+    SETMANUAL = 131,            // Switch to manual flight mode (restarts flight mode)
+    SETSZAMIN = 132,            // Set minimum SZA for autonomous profile trigger. param0: SZA (float)
+    SETPROFILESIZE = 133,       // Set profile deploy length. param0: size (float, reel revolutions)
+    SETDOCKAMOUNT = 134,        // Set dock retract length. param0: amount (float, revolutions)
+    SETDWELLTIME = 135,         // Set dwell time at profile bottom. param0: time (uint16, seconds)
+    SETPROFILEPERIOD = 136,     // Set period between autonomous profiles. param0: period (uint16, seconds)
+    SETNUMPROFILES = 137,       // Set number of profiles per autonomous session. param0: count (uint)
+    USESZATRIGGER = 138,        // Use SZA threshold to trigger autonomous profiles
+    USETIMETRIGGER = 139,       // Use time trigger for autonomous profiles
+    SETTIMETRIGGER = 140,       // Set Unix timestamp for autonomous profile trigger. param0: timestamp (uint32)
+    SETDOCKOVERSHOOT = 141,     // Set dock overshoot distance. param0: overshoot (float, revolutions)
+    RETRYDOCK = 142,            // Manual redock command (manual mode only). param0: deploy length (rev), param1: retract length (rev)
+    GETPUSTATUS = 143,          // Request RPU status via dock serial (manual mode only)
+    PUPOWERON = 144,            // Enable RPU dock power
+    PUPOWEROFF = 145,           // Disable RPU dock power
+    MANUALPROFILE = 146,        // Execute a profile (manual mode only). param0: profile size (rev), param1: dock amount (rev), param2: dock overshoot (rev), param3: dwell time (s)
+    OFFLOADPUPROFILE = 147,     // Offload stored RPU profile data (manual mode only)
+    SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds)
+    SETPUWARMUPTIME = 149,      // Set PU warmup time. param0: time (uint16, seconds)
+    AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev), param1: redock in (rev), param2: max retries
+    SETMOTIONTIMEOUT = 151,     // Set motion timeout. param0: timeout (uint16, seconds)
+    GETPIBEEPROM = 152,         // Request PIB EEPROM contents as TM
+    DOCKEDPROFILE = 153,        // Execute a docked profile (manual mode only). param0: duration (seconds)
+    STARTREALTIMEMCB = 154,     // Enable real-time MCB data streaming mode
+    EXITREALTIMEMCB = 155,      // Disable real-time MCB data streaming mode
 
     // RPU commands and settings
-    RPUSELECT = 184,        // Select active instruments, param0: enable ROPC, param1: enable TDLAS, param2: enable TSEN, param3: enable RS41
-    RPUSTATUSPERIOD = 185,  // Set the period for RPU status reports, in seconds. param0: period in seconds
-    RPURESET = 186,         // Reboot the RPU.
+    RPUCONFIG = 180,        // Configure RPU measurement. param0: sample rate (s), param1: enable ROPC, param2: enable TDLAS, param3: enable TSEN, param4: enable RS41
+    RPUSTATUSPERIOD = 181,  // Set the period for RPU status reports, in seconds. param0: period in seconds
+    RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC)
+    RPURESET = 183,         // Reboot the RPU via dock serial
+
     // Development testing only - not used in flight operations
-    RPUGOSTANDBY = 187,     // Go to STANDBY mode
-    RPUGOMEASURE = 188,     // Go to MEASUREMENT mode, param0: duration(s), param1: rate(s)
+    RPUGOSTANDBY = 184,     // Go to STANDBY mode
+    RPUGOMEASURE = 185,     // Send go-measure command to RPU using stored config (dev testing only)
 
     // Generic instrument commands
     RESET_INST = 200,
@@ -254,6 +250,9 @@ struct RPU_Param_t {
 
     // STATUSPERIOD setting
     uint16_t statusPeriodSecs;
+
+    // RPUBATTEMP setting
+    float batTemp;
 };
 
 #endif /* TELECOMMAND_H */
