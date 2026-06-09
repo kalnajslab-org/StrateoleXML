@@ -134,10 +134,12 @@ enum Telecommand_t : uint8_t {
     PUDOCKEDCONFIGS = 183,
 
     // RPU commands and settings
-    RPUGOSTANDBY = 184,     // Go to STANDBY mode
-    RPUGOMEASURE = 185,     // Go to MEASUREMENT mode, param0: measurement period in seconds, param1: enable TSEN, param2: enable ROPC, param3: enable RS41
-    RPUSTATUSPERIOD = 186,  // Set the period for RPU status reports, in seconds. param0: period in seconds  
-    RPURESET = 187,         // Reboot the RPU. 
+    RPUSELECT = 184,        // Select active instruments, param0: enable ROPC, param1: enable TDLAS, param2: enable TSEN, param3: enable RS41
+    RPUSTATUSPERIOD = 185,  // Set the period for RPU status reports, in seconds. param0: period in seconds
+    RPURESET = 186,         // Reboot the RPU.
+    // Development testing only - not used in flight operations
+    RPUGOSTANDBY = 187,     // Go to STANDBY mode
+    RPUGOMEASURE = 188,     // Go to MEASUREMENT mode, param0: duration(s), param1: rate(s)
 
     // Generic instrument commands
     RESET_INST = 200,
@@ -243,9 +245,11 @@ struct PU_Param_t {
 
 struct RPU_Param_t {
     // GO_MEASUREMENT settings
-    uint16_t measPeriodSecs;
-    uint8_t enableTSEN;
+    uint16_t measDurationSecs;
+    uint16_t measRateSecs;
     uint8_t enableROPC;
+    uint8_t enableTDLAS;
+    uint8_t enableTSEN;
     uint8_t enableRS41;
 
     // STATUSPERIOD setting

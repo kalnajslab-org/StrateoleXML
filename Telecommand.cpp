@@ -229,8 +229,12 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         break;
     // RPU parameters --------------------------------------
     case RPUGOMEASURE:
-        if (!Get_uint16(&(rpuParam.measPeriodSecs),1)) return false;
+        if (!Get_uint16(&(rpuParam.measDurationSecs),1)) return false;
+        if (!Get_uint16(&(rpuParam.measRateSecs),1)) return false;
+        break;
+    case RPUSELECT:
         if (!Get_uint8(&(rpuParam.enableROPC),1)) return false;
+        if (!Get_uint8(&(rpuParam.enableTDLAS),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTSEN),1)) return false;
         if (!Get_uint8(&(rpuParam.enableRS41),1)) return false;
         break;
