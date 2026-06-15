@@ -135,7 +135,7 @@ enum Telecommand_t : uint8_t {
 
     // Development testing only - not used in flight operations
     RPUGOSTANDBY = 184,     // Go to STANDBY mode
-    RPUGOMEASURE = 185,     // Send go-measure command to RPU using stored config (dev testing only)
+    RPUGOMEASURE = 185,     // Send go-measure command to RPU. param0: duration (s), param1: sample rate (s). Sensor enables/batt temp from stored config.
 
     // Generic instrument commands
     RESET_INST = 200,
