@@ -214,6 +214,9 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case RPUCONFIG:
         if (!Get_uint16(&(rpuParam.measDurationSecs),1)) return false;
         if (!Get_uint16(&(rpuParam.measRateSecs),1)) return false;
+        if (rpuParam.measRateSecs == 0) {
+            return false; // rate must be > 0
+        }
         if (!Get_uint8(&(rpuParam.enableROPC),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTDLAS),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTSEN),1)) return false;
