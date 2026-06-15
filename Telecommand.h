@@ -128,7 +128,7 @@ enum Telecommand_t : uint8_t {
     EXITREALTIMEMCB = 155,      // Disable real-time MCB data streaming mode
 
     // RPU commands and settings
-    RPUCONFIG = 180,        // Configure RPU measurement. param0: sample rate (s), param1: enable ROPC, param2: enable TDLAS, param3: enable TSEN, param4: enable RS41
+    RPUCONFIG = 180,        // Configure RPU measurement. param0: duration (s), param1: sample rate (s), param2: enable ROPC, param3: enable TDLAS, param4: enable TSEN, param5: enable RS41
     RPUSTATUSPERIOD = 181,  // Set the period for RPU status reports, in seconds. param0: period in seconds
     RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC)
     RPURESET = 183,         // Reboot the RPU via dock serial
