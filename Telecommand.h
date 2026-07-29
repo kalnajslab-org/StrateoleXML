@@ -51,6 +51,7 @@ enum Telecommand_t : uint8_t {
     GETMCBVOLTS = 19,     // Get MCB voltages
     CONTROLLERSON = 20,   // Turn MCB controllers on
     CONTROLLERSOFF = 21,  // Turn MCB controllers off
+    CENTERLW = 22,        // Center the level wind (MCB); no params
 
     // DIB Commands and Settings
     GOFTRFLIGHT = 50, // go to the flight FTR sub-mode
