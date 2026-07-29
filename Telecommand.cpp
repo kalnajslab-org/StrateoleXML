@@ -155,9 +155,10 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_uint8(&(dibParam.ftrBurstLim),1)) return false;
         break;
     // PIB Parameters -------------------------------------
-    case SETSZAMIN:
-        if (!Get_float(&(pibParam.szaMinimum),1)) return false;
-        break;
+    // Removed with RACHUTS autonomous mode (2026-07):
+    // case SETSZAMIN:
+    //     if (!Get_float(&(pibParam.szaMinimum),1)) return false;
+    //     break;
     case SETPROFILESIZE:
         if (!Get_float(&(pibParam.profileSize),1)) return false;
         break;
@@ -167,15 +168,16 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case SETDWELLTIME:
         if (!Get_uint16(&(pibParam.dwellTime),1)) return false;
         break;
-    case SETPROFILEPERIOD:
-        if (!Get_uint16(&(pibParam.profilePeriod),1)) return false;
-        break;
-    case SETNUMPROFILES:
-        if (!Get_uint8(&(pibParam.numProfiles),1)) return false;
-        break;
-    case SETTIMETRIGGER:
-        if (!Get_uint32(&(pibParam.timeTrigger),1)) return false;
-        break;
+    // Removed with RACHUTS autonomous mode (2026-07):
+    // case SETPROFILEPERIOD:
+    //     if (!Get_uint16(&(pibParam.profilePeriod),1)) return false;
+    //     break;
+    // case SETNUMPROFILES:
+    //     if (!Get_uint8(&(pibParam.numProfiles),1)) return false;
+    //     break;
+    // case SETTIMETRIGGER:
+    //     if (!Get_uint32(&(pibParam.timeTrigger),1)) return false;
+    //     break;
     case SETDOCKOVERSHOOT:
         if (!Get_float(&(pibParam.dockOvershoot),1)) return false;
         break;

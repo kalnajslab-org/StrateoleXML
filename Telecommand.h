@@ -101,17 +101,21 @@ enum Telecommand_t : uint8_t {
     SETPUMPTEMP = 119, // set the minimum temperature for the pumps
 
     // RACHUTS Commands and Settings
-    SETAUTO = 130,              // Switch to autonomous flight mode (restarts flight mode)
-    SETMANUAL = 131,            // Switch to manual flight mode (restarts flight mode)
-    SETSZAMIN = 132,            // Set minimum SZA for autonomous profile trigger. param0: SZA (float)
+    // Autonomous mode was removed from RACHUTS (2026-07). Its telecommands are
+    // commented out below rather than deleted: the IDs (130-132, 136-140) stay
+    // reserved so the numbering is preserved, and any other app still referencing
+    // them fails to compile -- surfacing a latent dependency. Do not reuse the IDs.
+    // SETAUTO = 130,           // Switch to autonomous flight mode (restarts flight mode)
+    // SETMANUAL = 131,         // Switch to manual flight mode (restarts flight mode)
+    // SETSZAMIN = 132,         // Set minimum SZA for autonomous profile trigger. param0: SZA (float)
     SETPROFILESIZE = 133,       // Set profile deploy length. param0: size (float, reel revolutions)
     SETDOCKAMOUNT = 134,        // Set dock retract length. param0: amount (float, revolutions)
     SETDWELLTIME = 135,         // Set dwell time at profile bottom. param0: time (uint16, seconds)
-    SETPROFILEPERIOD = 136,     // Set period between autonomous profiles. param0: period (uint16, seconds)
-    SETNUMPROFILES = 137,       // Set number of profiles per autonomous session. param0: count (uint)
-    USESZATRIGGER = 138,        // Use SZA threshold to trigger autonomous profiles
-    USETIMETRIGGER = 139,       // Use time trigger for autonomous profiles
-    SETTIMETRIGGER = 140,       // Set Unix timestamp for autonomous profile trigger. param0: timestamp (uint32)
+    // SETPROFILEPERIOD = 136,  // Set period between autonomous profiles. param0: period (uint16, seconds)
+    // SETNUMPROFILES = 137,    // Set number of profiles per autonomous session. param0: count (uint)
+    // USESZATRIGGER = 138,     // Use SZA threshold to trigger autonomous profiles
+    // USETIMETRIGGER = 139,    // Use time trigger for autonomous profiles
+    // SETTIMETRIGGER = 140,    // Set Unix timestamp for autonomous profile trigger. param0: timestamp (uint32)
     SETDOCKOVERSHOOT = 141,     // Set dock overshoot distance. param0: overshoot (float, revolutions)
     RETRYDOCK = 142,            // Manual redock command (manual mode only). param0: deploy length (rev), param1: retract length (rev)
     GETPUSTATUS = 143,          // Request RPU status via dock serial (manual mode only)
@@ -156,19 +160,15 @@ struct DIB_Param_t {
 };
 
 struct PIB_Param_t {
-    float szaMinimum;
     float profileSize;
     float dockAmount;
     float dockOvershoot;
     float autoRedockOut;
     float autoRedockIn;
-    uint32_t timeTrigger;
     uint16_t dwellTime;
-    uint16_t profilePeriod;
     uint16_t preprofileTime;
     uint16_t warmupTime;
     uint16_t dockedProfileTime;
-    uint8_t numProfiles;
     uint8_t numRedock;
     uint8_t motionTimeout;
 };
