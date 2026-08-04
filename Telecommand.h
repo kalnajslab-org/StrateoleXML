@@ -80,6 +80,7 @@ enum Telecommand_t : uint8_t {
     RATSECURS41METADATA = 74,   // Request RS41 metadata from ECU
     RATSPAIREDCEU = 75,         // Set the paired ECU ID, param0: ECU ID (uint8_t)
     RATSINFO = 76,              // Send a RATSTEXT TM with firmware version and LoRa config
+    RATSSETMOTIONTIMEOUT = 77,  // Set MCB motion timeout, param0: timeout in seconds (uint16)
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -180,6 +181,7 @@ struct RATS_Param_t {
     uint16_t retract_velocity;
     float ecu_tempC;
     uint8_t paired_ecu;
+    uint16_t motion_timeout;
 };
 
 struct LPC_Param_t {

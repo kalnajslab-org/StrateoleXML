@@ -95,7 +95,10 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_float(&(ratsParam.ecu_tempC),1)) return false;
         break;
     case RATSPAIREDCEU:
-        if (!Get_uint8(&(ratsParam.paired_ecu),1)) return false;    
+        if (!Get_uint8(&(ratsParam.paired_ecu),1)) return false;
+        break;
+    case RATSSETMOTIONTIMEOUT:
+        if (!Get_uint16(&(ratsParam.motion_timeout),1)) return false;
         break;
     // LPC Parameters -------------------------------------
     case SETSAMPLE:
