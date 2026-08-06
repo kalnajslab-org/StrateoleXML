@@ -82,6 +82,7 @@ enum Telecommand_t : uint8_t {
     RATSPAIREDCEU = 75,         // Set the paired ECU ID, param0: ECU ID (uint8_t)
     RATSINFO = 76,              // Send a RATSTEXT TM with firmware version and LoRa config
     RATSSETMOTIONTIMEOUT = 77,  // Set MCB motion timeout, param0: timeout in seconds (uint16)
+    RATSLORASUSPEND = 78,       // Suspend ECU LoRa TX, param0: duration in seconds (uint16); 0 cancels a suspend
 
     // LPC Settings
     SETMODE = 100, // Expects mode enum
@@ -183,6 +184,7 @@ struct RATS_Param_t {
     float ecu_tempC;
     uint8_t paired_ecu;
     uint16_t motion_timeout;
+    uint16_t lora_suspend_sec;
 };
 
 struct LPC_Param_t {

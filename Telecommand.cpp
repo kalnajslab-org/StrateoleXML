@@ -100,6 +100,9 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case RATSSETMOTIONTIMEOUT:
         if (!Get_uint16(&(ratsParam.motion_timeout),1)) return false;
         break;
+    case RATSLORASUSPEND:
+        if (!Get_uint16(&(ratsParam.lora_suspend_sec),1)) return false;
+        break;
     // LPC Parameters -------------------------------------
     case SETSAMPLE:
         if (!Get_uint16(&(lpcParam.samples),1)) return false;
