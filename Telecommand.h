@@ -130,7 +130,7 @@ enum Telecommand_t : uint8_t {
     AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev), param1: redock in (rev), param2: max retries
     SETMOTIONTIMEOUT = 151,     // Set motion timeout. param0: timeout (uint16, seconds)
     GETPIBEEPROM = 152,         // Request PIB EEPROM contents as TM
-    DOCKEDPROFILE = 153,        // Execute a docked profile (manual mode only). param0: duration (seconds)
+    DOCKEDPROFILE = 153,        // Execute a docked profile (manual mode only). param0: duration (s), param1: sample rate (s)
     STARTREALTIMEMCB = 154,     // Enable real-time MCB data streaming mode
     EXITREALTIMEMCB = 155,      // Disable real-time MCB data streaming mode
     CANCELMEASURE = 156,        // Cancel an in-progress docked profile (RPU measurement); no params. Will also be wired to cancel a manual profile in the future.
@@ -172,6 +172,7 @@ struct PIB_Param_t {
     uint16_t preprofileTime;
     uint16_t warmupTime;
     uint16_t dockedProfileTime;
+    uint16_t dockedProfileRate;
     uint8_t numRedock;
     uint8_t motionTimeout;
 };

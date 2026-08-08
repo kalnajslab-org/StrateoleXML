@@ -213,6 +213,13 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         break;
     case DOCKEDPROFILE:
         if (!Get_uint16(&(pibParam.dockedProfileTime),1)) return false;
+        if (!Get_uint16(&(pibParam.dockedProfileRate),1)) return false;
+        if (pibParam.dockedProfileRate == 0) {
+            return false; // rate must be > 0
+        }
+        if (pibParam.dockedProfileTime != 0 && pibParam.dockedProfileTime <= pibParam.dockedProfileRate) {
+            return false; // a nonzero duration must be greater than the sample rate
+        }
         break;
     // PU parameters --------------------------------------
     case RPUBATTEMP:
