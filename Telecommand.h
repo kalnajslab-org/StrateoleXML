@@ -134,6 +134,7 @@ enum Telecommand_t : uint8_t {
     STARTREALTIMEMCB = 154,     // Enable real-time MCB data streaming mode
     EXITREALTIMEMCB = 155,      // Disable real-time MCB data streaming mode
     CANCELMEASURE = 156,        // Cancel an in-progress docked profile (RPU measurement); no params. Will also be wired to cancel a manual profile in the future.
+    SETDOCKEDOFFLOADPERIOD = 157, // Set the docked profile's periodic offload interval. param0: period (uint16, seconds; 0 = offload once at the end, the legacy behavior)
 
     // RPU commands and settings
     RPUCONFIG = 180,        // Configure RPU measurement. param0: duration (s), param1: sample rate (s), param2: enable ROPC, param3: enable TDLAS, param4: enable TSEN, param5: enable RS41
@@ -173,6 +174,7 @@ struct PIB_Param_t {
     uint16_t warmupTime;
     uint16_t dockedProfileTime;
     uint16_t dockedProfileRate;
+    uint16_t dockedOffloadPeriod;
     uint8_t numRedock;
     uint8_t motionTimeout;
 };

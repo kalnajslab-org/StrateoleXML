@@ -221,6 +221,9 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
             return false; // a nonzero duration must be greater than the sample rate
         }
         break;
+    case SETDOCKEDOFFLOADPERIOD:
+        if (!Get_uint16(&(pibParam.dockedOffloadPeriod),1)) return false;
+        break;
     // PU parameters --------------------------------------
     case RPUBATTEMP:
         if (!Get_float(&(rpuParam.batTemp),1)) return false;
