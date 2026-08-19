@@ -217,8 +217,12 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (pibParam.dockedProfileRate == 0) {
             return false; // rate must be > 0
         }
-        if (pibParam.dockedProfileTime != 0 && pibParam.dockedProfileTime <= pibParam.dockedProfileRate) {
-            return false; // a nonzero duration must be greater than the sample rate
+        // duration must always be nonzero and greater than the sample rate: a
+        // docked profile must never be unbounded. (duration == 0 meaning "run
+        // until commanded to stop" was mirrored from RPUGOMEASURE, a dev-testing-
+        // only command -- not an intended flight semantic for this TC.)
+        if (pibParam.dockedProfileTime <= pibParam.dockedProfileRate) {
+            return false;
         }
         break;
     case SETDOCKEDOFFLOADPERIOD:
