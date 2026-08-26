@@ -126,7 +126,6 @@ enum Telecommand_t : uint8_t {
     MANUALPROFILE = 146,        // Execute a profile (manual mode only). param0: profile size (rev), param1: dock amount (rev), param2: dock overshoot (rev), param3: dwell time (s), param4: RPU sample rate (s)
     OFFLOADPUPROFILE = 147,     // Offload stored RPU profile data (manual mode only)
     SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds)
-    SETPUWARMUPTIME = 149,      // Set PU warmup time. param0: time (uint16, seconds)
     AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev), param1: redock in (rev), param2: max retries
     SETMOTIONTIMEOUT = 151,     // Set motion timeout. param0: timeout (uint16, seconds)
     GETPIBEEPROM = 152,         // Request PIB EEPROM contents as TM
@@ -172,7 +171,6 @@ struct PIB_Param_t {
     uint16_t dwellTime;
     uint16_t sampleRate;        // RPU measurement sample rate for a manual profile (s)
     uint16_t preprofileTime;
-    uint16_t warmupTime;
     uint16_t dockedProfileTime;
     uint16_t dockedProfileRate;
     uint16_t dockedOffloadPeriod;

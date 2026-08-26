@@ -204,9 +204,6 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case SETPREPROFILETIME:
         if (!Get_uint16(&(pibParam.preprofileTime),1)) return false;
         break;
-    case SETPUWARMUPTIME:
-        if (!Get_uint16(&(pibParam.warmupTime),1)) return false;
-        break;
     case AUTOREDOCKPARAMS:
         if (!Get_float(&(pibParam.autoRedockOut),1)) return false;
         if (!Get_float(&(pibParam.autoRedockIn),1)) return false;
