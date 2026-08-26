@@ -123,7 +123,7 @@ enum Telecommand_t : uint8_t {
     GETPUSTATUS = 143,          // Request RPU status via dock serial (manual mode only)
     PUPOWERON = 144,            // Enable RPU dock power
     PUPOWEROFF = 145,           // Disable RPU dock power
-    MANUALPROFILE = 146,        // Execute a profile (manual mode only). param0: profile size (rev), param1: dock amount (rev), param2: dock overshoot (rev), param3: dwell time (s)
+    MANUALPROFILE = 146,        // Execute a profile (manual mode only). param0: profile size (rev), param1: dock amount (rev), param2: dock overshoot (rev), param3: dwell time (s), param4: RPU sample rate (s)
     OFFLOADPUPROFILE = 147,     // Offload stored RPU profile data (manual mode only)
     SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds)
     SETPUWARMUPTIME = 149,      // Set PU warmup time. param0: time (uint16, seconds)
@@ -137,7 +137,7 @@ enum Telecommand_t : uint8_t {
     SETDOCKEDOFFLOADPERIOD = 157, // Set the docked profile's periodic offload interval. param0: period (uint16, seconds; 0 = offload once at the end, the legacy behavior)
 
     // RPU commands and settings
-    RPUCONFIG = 180,        // Configure RPU measurement. param0: duration (s), param1: sample rate (s), param2: enable ROPC, param3: enable TDLAS, param4: enable TSEN, param5: enable RS41
+    RPUCONFIG = 180,        // Configure RPU sensor enables. param0: enable ROPC, param1: enable TDLAS, param2: enable TSEN, param3: enable RS41
     RPUSTATUSPERIOD = 181,  // Set the period for RPU status reports, in seconds. param0: period in seconds
     RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC)
     RPURESET = 183,         // Reboot the RPU via dock serial
@@ -170,6 +170,7 @@ struct PIB_Param_t {
     float autoRedockOut;
     float autoRedockIn;
     uint16_t dwellTime;
+    uint16_t sampleRate;        // RPU measurement sample rate for a manual profile (s)
     uint16_t preprofileTime;
     uint16_t warmupTime;
     uint16_t dockedProfileTime;

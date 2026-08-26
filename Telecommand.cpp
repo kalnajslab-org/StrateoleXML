@@ -196,6 +196,10 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         if (!Get_float(&(pibParam.dockAmount),1)) return false;
         if (!Get_float(&(pibParam.dockOvershoot),1)) return false;
         if (!Get_uint16(&(pibParam.dwellTime),1)) return false;
+        if (!Get_uint16(&(pibParam.sampleRate),1)) return false;
+        if (pibParam.sampleRate == 0) {
+            return false; // rate must be > 0
+        }
         break;
     case SETPREPROFILETIME:
         if (!Get_uint16(&(pibParam.preprofileTime),1)) return false;
@@ -234,14 +238,6 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
         break;
     // RPU parameters --------------------------------------
     case RPUCONFIG:
-        if (!Get_uint16(&(rpuParam.measDurationSecs),1)) return false;
-        if (!Get_uint16(&(rpuParam.measRateSecs),1)) return false;
-        if (rpuParam.measRateSecs == 0) {
-            return false; // rate must be > 0
-        }
-        if (rpuParam.measDurationSecs != 0 && rpuParam.measDurationSecs <= rpuParam.measRateSecs) {
-            return false; // a nonzero duration must be greater than the sample rate
-        }
         if (!Get_uint8(&(rpuParam.enableROPC),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTDLAS),1)) return false;
         if (!Get_uint8(&(rpuParam.enableTSEN),1)) return false;
