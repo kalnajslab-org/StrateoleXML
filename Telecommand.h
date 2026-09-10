@@ -85,22 +85,23 @@ enum Telecommand_t : uint8_t {
     RATSLORASUSPEND = 78,       // Suspend ECU LoRa TX, param0: duration in seconds (uint16); 0 cancels a suspend
 
     // LPC Settings
-    SETMODE = 100, // Expects mode enum
-    SETSAMPLE = 101, // Number of samples per cycle
+    SETMODE = 100,       // Expects mode enum
+    SETSAMPLE = 101,     // Number of samples per cycle
     SETWARMUPTIME = 102, // Time in seconds
-    SETCYCLETIME = 103, // Time in minutes
-    GETFILE = 104, // Requested frame number
-    SETHGBINS = 105, // Number of bins followed by new bin values
-    SETLGBINS = 106, // Number of bins followed by new bin values
-    SETLASERTEMP = 107, // Target laser temp
-    SETHKPERIOD = 108, // Time in minutes
-    SETFLUSH = 109, // Time in seconds for air flush
-    SETSAMPLEAVG = 110, // Values to average from PHA
+    SETCYCLETIME = 103,  // Time in minutes
+    GETFILE = 104,       // Requested frame number
+    SETHGBINS = 105,     // Number of bins followed by new bin values
+    SETLGBINS = 106,     // Number of bins followed by new bin values
+    SETLASERTEMP = 107,  // Target laser temp
+    SETHKPERIOD = 108,   // Time in minutes
+    SETFLUSH = 109,      // Time in seconds for air flush
+    SETSAMPLEAVG = 110,  // Values to average from PHA
     // IDs 111-115 are defined in TCMessage.py, but not here
-    SETPHA = 116, // Pulse height analyzer parameters
-    REGENRS41 = 117, // Initiate an RS41 regeneration
-    SETFLOW = 118, // set the BEMF setpoint for both pumps
-    SETPUMPTEMP = 119, // set the minimum temperature for the pumps
+    SETPHA = 116,        // Pulse height analyzer parameters
+    REGENRS41 = 117,     // Initiate an RS41 regeneration
+    SETFLOW = 118,       // set the BEMF setpoint for both pumps
+    SETPUMPTEMP = 119,   // set the minimum temperature for the pumps
+    SETRS41RATE = 120,   // Set RS41 sample period, param0: period in seconds (uint16)
 
     // RACHUTS Commands and Settings
     // Autonomous mode was removed from RACHUTS (2026-07). Its telecommands are
@@ -208,6 +209,7 @@ struct LPC_Param_t {
     uint16_t phaLoGainOffset;
     float flowSetpoint;
     float pumpMinTemp;
+    uint16_t rs41SamplePeriod;
 };
 
 struct MCB_Param_t {

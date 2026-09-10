@@ -139,6 +139,13 @@ bool XMLReader::ParseTelecommand(uint8_t telecommand)
     case SETPUMPTEMP:
         if (!Get_float(&(lpcParam.pumpMinTemp),1)) return false;
         break;
+    case SETRS41RATE:
+        if (!Get_uint16(&(lpcParam.rs41SamplePeriod),1)) return false;
+        // must be > 0
+        if (lpcParam.rs41SamplePeriod < 1) {
+            return false;
+        }
+        break;
 
     // DIB Parameters -------------------------------------
     case FTRONTIME:
