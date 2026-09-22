@@ -88,7 +88,7 @@ enum Telecommand_t : uint8_t {
     SETMODE = 100,       // Expects mode enum
     SETSAMPLE = 101,     // Number of samples per cycle [1 - 100]
     SETWARMUPTIME = 102, // Time in seconds [1 - 600]
-    SETCYCLETIME = 103,  // Time in minutes [1 - 720
+    SETCYCLETIME = 103,  // Time in minutes [1 - 720]
     GETFILE = 104,       // Requested frame number
     SETHGBINS = 105,     // Number of bins followed by new bin values
     SETLGBINS = 106,     // Number of bins followed by new bin values
