@@ -30,15 +30,15 @@ enum Telecommand_t : uint8_t {
     NULL_TELECOMMAND = 0,
 
     // MCB commands and parameters
-    DEPLOYx = 1,          // Reel out, param0: deploy length in revolutions
-    DEPLOYv = 2,          // Set deploy velocity, param0: deploy velocity in revs/sec
-    DEPLOYa = 3,          // Set deploy acceleration, param0: deploy acceleration in revs/sec^2
-    RETRACTx = 4,         // Reel in, param0: retract length in revolutions
-    RETRACTv = 5,         // Set retract velocity, param0: retract velocity in revs/sec
+    DEPLOYx = 1,          // Reel out, param0: deploy length in revolutions [0 - 8000]
+    DEPLOYv = 2,          // Set deploy velocity, param0: deploy velocity in revs/sec [0 - 300]
+    DEPLOYa = 3,          // Set deploy acceleration, param0: deploy acceleration in revs/sec^2 [0 - 10]
+    RETRACTx = 4,         // Reel in, param0: retract length in revolutions [0 - 8000]
+    RETRACTv = 5,         // Set retract velocity, param0: retract velocity in revs/sec [0 - 300]
     RETRACTa = 6,         // Set retract acceleration, param0: retract acceleration in revs/sec^2
-    DOCKx = 7,            // Set dock length, param0: dock length in revolutions
-    DOCKv = 8,            // Set dock velocity, param0: dock velocity in revs/sec
-    DOCKa = 9,            // Set dock acceleration, param0: dock acceleration in revs/sec^2
+    DOCKx = 7,            // Set dock length, param0: dock length in revolutions [0 - 1000]
+    DOCKv = 8,            // Set dock velocity, param0: dock velocity in revs/sec [0 - 50]
+    DOCKa = 9,            // Set dock acceleration, param0: dock acceleration in revs/sec^2 [0 - 10]
     FULLRETRACT = 10,     // Full retract
     CANCELMOTION = 11,    // Cancel any ongoing motion
     ZEROREEL = 12,        // Zero the reel position
@@ -64,13 +64,13 @@ enum Telecommand_t : uint8_t {
     SETMEASURETYPE = 57,
 
     // RATS Commands and Settings
-    RATSECUDECIMATEFACTOR = 60, // Set ECU decimate factor, must be > 0, param0: 1==none, 2=every second one, etc.)
+    RATSECUDECIMATEFACTOR = 60, // Set ECU decimate factor, must be > 0, param0: 1==none, 2=every second one, etc.) [0 - 1000]
     RATSGETEEPROM = 61,         // Fetch the mainboard EEPROM
     RATSREALTIMEMCBON = 62,     // Enable real-time MCB reporting
     RATSREALTIMEMCBOFF = 63,    // Disable real-time MCB reporting
     RATSLORATXTESTON = 64,      // Enable LoRa TX test mode
     RATSLORATXTESTOFF = 65,     // Disable LoRa TX test mode
-    RATSECUTEMP = 66,           // Set the ECU temperature setpoint, param0: temperature in C
+    RATSECUTEMP = 66,           // Set the ECU temperature setpoint, param0: temperature in C [-60 - 30]
     RATSECUPWRON = 67,          // Manual ECU power on
     RATSECUPWROFF = 68,         // Manual ECU power off
     RATSRS41REGEN = 69,         // RS41 regeneration on. Command is sent to ECU; it will put the RS41 in regen mode, which will timeout later.
@@ -81,27 +81,27 @@ enum Telecommand_t : uint8_t {
     RATSECURS41METADATA = 74,   // Request RS41 metadata from ECU
     RATSPAIREDCEU = 75,         // Set the paired ECU ID, param0: ECU ID (uint8_t)
     RATSINFO = 76,              // Send a RATSTEXT TM with firmware version and LoRa config
-    RATSSETMOTIONTIMEOUT = 77,  // Set MCB motion timeout, param0: timeout in seconds (uint16)
-    RATSLORASUSPEND = 78,       // Suspend ECU LoRa TX, param0: duration in seconds (uint16); 0 cancels a suspend
+    RATSSETMOTIONTIMEOUT = 77,  // Set MCB motion timeout, param0: timeout in seconds (uint16) [0 - 300]
+    RATSLORASUSPEND = 78,       // Suspend ECU LoRa TX, param0: duration in seconds (uint16); 0 cancels a suspend [0 - 3600]
 
     // LPC Settings
     SETMODE = 100,       // Expects mode enum
-    SETSAMPLE = 101,     // Number of samples per cycle
-    SETWARMUPTIME = 102, // Time in seconds
-    SETCYCLETIME = 103,  // Time in minutes
+    SETSAMPLE = 101,     // Number of samples per cycle [1 - 100]
+    SETWARMUPTIME = 102, // Time in seconds [1 - 600]
+    SETCYCLETIME = 103,  // Time in minutes [1 - 720
     GETFILE = 104,       // Requested frame number
     SETHGBINS = 105,     // Number of bins followed by new bin values
     SETLGBINS = 106,     // Number of bins followed by new bin values
-    SETLASERTEMP = 107,  // Target laser temp
-    SETHKPERIOD = 108,   // Time in minutes
-    SETFLUSH = 109,      // Time in seconds for air flush
-    SETSAMPLEAVG = 110,  // Values to average from PHA
+    SETLASERTEMP = 107,  // Target laser temp [-20 - 30]
+    SETHKPERIOD = 108,   // Time in minutes [1 - 60]
+    SETFLUSH = 109,      // Time in seconds for air flush [1 - 600]
+    SETSAMPLEAVG = 110,  // Values to average from PHA [1 - 100]
     // IDs 111-115 are defined in TCMessage.py, but not here
     SETPHA = 116,        // Pulse height analyzer parameters
     REGENRS41 = 117,     // Initiate an RS41 regeneration
-    SETFLOW = 118,       // set the BEMF setpoint for both pumps
-    SETPUMPTEMP = 119,   // set the minimum temperature for the pumps
-    SETRS41RATE = 120,   // Set RS41 sample period, param0: period in seconds (uint16)
+    SETFLOW = 118,       // set the BEMF setpoint for both pumps [5 - 10]
+    SETPUMPTEMP = 119,   // set the minimum temperature for the pumps [-40 - 30]
+    SETRS41RATE = 120,   // Set RS41 sample period, param0: period in seconds (uint16) [1 - 3600]
 
     // RACHUTS Commands and Settings
     // Autonomous mode was removed from RACHUTS (2026-07). Its telecommands are
@@ -111,37 +111,37 @@ enum Telecommand_t : uint8_t {
     // SETAUTO = 130,           // Switch to autonomous flight mode (restarts flight mode)
     // SETMANUAL = 131,         // Switch to manual flight mode (restarts flight mode)
     // SETSZAMIN = 132,         // Set minimum SZA for autonomous profile trigger. param0: SZA (float)
-    SETPROFILESIZE = 133,       // Set profile deploy length. param0: size (float, reel revolutions)
-    SETDOCKAMOUNT = 134,        // Set dock retract length. param0: amount (float, revolutions)
-    SETDWELLTIME = 135,         // Set dwell time at profile bottom. param0: time (uint16, seconds)
+    SETPROFILESIZE = 133,       // Set profile deploy length. param0: size (float, reel revolutions) [0 - 8000]
+    SETDOCKAMOUNT = 134,        // Set dock retract length. param0: amount (float, revolutions) [0 - 1000]
+    SETDWELLTIME = 135,         // Set dwell time at profile bottom. param0: time (uint16, seconds) [1 - 3600]
     // SETPROFILEPERIOD = 136,  // Set period between autonomous profiles. param0: period (uint16, seconds)
     // SETNUMPROFILES = 137,    // Set number of profiles per autonomous session. param0: count (uint)
     // USESZATRIGGER = 138,     // Use SZA threshold to trigger autonomous profiles
     // USETIMETRIGGER = 139,    // Use time trigger for autonomous profiles
     // SETTIMETRIGGER = 140,    // Set Unix timestamp for autonomous profile trigger. param0: timestamp (uint32)
-    SETDOCKOVERSHOOT = 141,     // Set dock overshoot distance. param0: overshoot (float, revolutions)
-    RETRYDOCK = 142,            // Manual redock command. param0: deploy length (rev), param1: retract length (rev)
+    SETDOCKOVERSHOOT = 141,     // Set dock overshoot distance. param0: overshoot (float, revolutions) [1 - 1000]
+    RETRYDOCK = 142,            // Manual redock command. param0: deploy length (rev) [1 - 1000], param1: retract length (rev) [1 - 1000]
     GETPUSTATUS = 143,          // Request RPU status via dock serial
     PUPOWERON = 144,            // Enable RPU dock power
     PUPOWEROFF = 145,           // Disable RPU dock power
-    PROFILE = 146,              // Execute a profile. param0: profile size (rev), param1: dock amount (rev), param2: dock overshoot (rev), param3: dwell time (s), param4: RPU sample rate (s)
+    PROFILE = 146,              // Execute a profile. param0: profile size (rev) [1 - 1000], param1: dock amount (rev) [0 - 1000], param2: dock overshoot (rev) [1 - 1000]
     OFFLOADPUPROFILE = 147,     // Offload stored RPU profile data
-    SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds)
-    AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev), param1: redock in (rev), param2: max retries
-    SETMOTIONTIMEOUT = 151,     // Set motion timeout. param0: timeout (uint16, seconds)
+    SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds) [0 - 600]
+    AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev) [0 - 1000], param1: redock in (rev) [0 - 1000], param2: max retries [1 - 10]    
+    SETMOTIONTIMEOUT = 151,     // Set motion timeout. param0: timeout (uint16, seconds) [0 - 3600]
     GETPIBEEPROM = 152,         // Request PIB EEPROM contents as TM
-    DOCKEDPROFILE = 153,        // Execute a docked profile. param0: duration (s), param1: sample rate (s)
+    DOCKEDPROFILE = 153,        // Execute a docked profile. param0: duration (s) [1 - 86400], param1: sample rate (s) [1 - 600]
     STARTREALTIMEMCB = 154,     // Enable real-time MCB data streaming mode
     EXITREALTIMEMCB = 155,      // Disable real-time MCB data streaming mode
     CANCELMEASURE = 156,        // Cancel an in-progress docked profile (RPU measurement); no params. Will also be wired to cancel a manual profile in the future.
-    SETDOCKEDOFFLOADPERIOD = 157, // Set the docked profile's periodic offload interval. param0: period (uint16, seconds; 0 = offload once at the end, the legacy behavior)
+    SETDOCKEDOFFLOADPERIOD = 157, // Set the docked profile's periodic offload interval. param0: period (uint16, seconds; 0 = offload once at the end, the legacy behavior) [0 - 86400]
     RAACKOVERRIDEON = 158,      // Bypass the RA-ack requirement (emergency use, not persisted, resets to off on reboot)
     RAACKOVERRIDEOFF = 159,     // Restore the normal RA-ack requirement
 
     // RPU commands and settings
-    RPUCONFIG = 180,        // Configure RPU sensor enables. param0: enable ROPC, param1: enable TDLAS, param2: enable TSEN, param3: enable RS41
-    RPUSTATUSPERIOD = 181,  // Set the period for RPU status reports, in seconds. param0: period in seconds
-    RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC)
+    RPUCONFIG = 180,        // Configure RPU sensor enables. param0: enable ROPC [0 - 1], param1: enable TDLAS [0 - 1], param2: enable TSEN [0 - 1], param3: enable RS41 [0 - 1]
+    RPUSTATUSPERIOD = 181,  // Set the period for RPU status reports, in seconds. param0: period in seconds [1 - 86400]
+    RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC) [ -30 - 30]
     RPURESET = 183,         // Reboot the RPU via dock serial
 
     // Development testing only - not used in flight operations
@@ -151,10 +151,10 @@ enum Telecommand_t : uint8_t {
     RPUREGENRS41 = 186,     // Trigger an RS41 regeneration cycle on the RPU (requires RPU in MEASURE with RS41 enabled); no params
 
     // Generic instrument commands
-    RESET_INST = 200,
-    EXITERROR = 201,
-    GETTMBUFFER = 202,
-    SENDSTATE = 203,
+    RESET_INST = 200,       // Reset the instrument via the watchdog timer
+    EXITERROR = 201,        // Exit the current error state
+    GETTMBUFFER = 202,      // Request the TM buffer contents as TM
+    SENDSTATE = 203,        // Send the current state of the instrument as TM
 };
 
 struct DIB_Param_t {
