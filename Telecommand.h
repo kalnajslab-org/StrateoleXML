@@ -102,6 +102,7 @@ enum Telecommand_t : uint8_t {
     SETFLOW = 118,       // set the BEMF setpoint for both pumps [5 - 10]
     SETPUMPTEMP = 119,   // set the minimum temperature for the pumps [-40 - 30]
     SETRS41RATE = 120,   // Set RS41 sample period, param0: period in seconds (uint16) [1 - 3600]
+    STARTWARMUP = 121,   // Start a measurement warmup now; only honored in flight mode FL_IDLE
 
     // RACHUTS Commands and Settings
     // Autonomous mode was removed from RACHUTS (2026-07). Its telecommands are
