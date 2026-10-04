@@ -30,15 +30,15 @@ enum Telecommand_t : uint8_t {
     NULL_TELECOMMAND = 0,
 
     // MCB commands and parameters
-    DEPLOYx = 1,          // Reel out, param0: deploy length in revolutions [0 - 8000]
+    DEPLOYx = 1,          // Reel out, param0: deploy length in revolutions [0 - 9000]
     DEPLOYv = 2,          // Set deploy velocity, param0: deploy velocity in revs/sec [0 - 300]
-    DEPLOYa = 3,          // Set deploy acceleration, param0: deploy acceleration in revs/sec^2 [0 - 10]
+    DEPLOYa = 3,          // Set deploy acceleration, param0: deploy acceleration in revs/sec^2 [0 - 100]
     RETRACTx = 4,         // Reel in, param0: retract length in revolutions [0 - 8000]
     RETRACTv = 5,         // Set retract velocity, param0: retract velocity in revs/sec [0 - 300]
     RETRACTa = 6,         // Set retract acceleration, param0: retract acceleration in revs/sec^2 [0 - 10]
     DOCKx = 7,            // Set dock length, param0: dock length in revolutions [0 - 1000]
     DOCKv = 8,            // Set dock velocity, param0: dock velocity in revs/sec [0 - 50]
-    DOCKa = 9,            // Set dock acceleration, param0: dock acceleration in revs/sec^2 [0 - 10]
+    DOCKa = 9,            // Set dock acceleration, param0: dock acceleration in revs/sec^2 [0 - 100]
     FULLRETRACT = 10,     // Full retract
     CANCELMOTION = 11,    // Cancel any ongoing motion
     ZEROREEL = 12,        // Zero the reel position
@@ -51,7 +51,7 @@ enum Telecommand_t : uint8_t {
     GETMCBVOLTS = 19,     // Get MCB voltages
     CONTROLLERSON = 20,   // Turn MCB controllers on
     CONTROLLERSOFF = 21,  // Turn MCB controllers off
-    CENTERLW = 22,        // Center the level wind (MCB); no params
+    CENTERLW = 22,        // Center the level wind (MCB) - don't use this if docked.
 
     // DIB Commands and Settings
     GOFTRFLIGHT = 50, // go to the flight FTR sub-mode
@@ -123,11 +123,11 @@ enum Telecommand_t : uint8_t {
     // USETIMETRIGGER = 139,    // Use time trigger for autonomous profiles
     // SETTIMETRIGGER = 140,    // Set Unix timestamp for autonomous profile trigger. param0: timestamp (uint32)
     SETDOCKOVERSHOOT = 141,     // Set dock overshoot distance. param0: overshoot (float, revolutions) [1 - 1000]
-    RETRYDOCK = 142,            // Manual redock command. param0: deploy length (rev) [1 - 1000], param1: retract length (rev) [1 - 1000]
+    RETRYDOCK = 142,            // Manual redock command. param0: deploy length (rev) [0.01 - 15], param1: retract length (rev) [0 - 100]
     GETPUSTATUS = 143,          // Request RPU status via dock serial
     PUPOWERON = 144,            // Enable RPU dock power
     PUPOWEROFF = 145,           // Disable RPU dock power
-    PROFILE = 146,              // Execute a profile. param0: profile size (rev) [1 - 1000], param1: dock amount (rev) [0 - 1000], param2: dock overshoot (rev) [1 - 1000]
+    PROFILE = 146,              // Execute a profile. param0: profile size (rev) [1 - 1000], param1: dock amount (rev) [0 - 1000], param2: dock overshoot (rev) [1 - 1000], param3: dwell time (s) [1 - 3600], param4: sample rate (s) [1 - 600]
     OFFLOADPUPROFILE = 147,     // Offload stored RPU profile data
     SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds) [0 - 600]
     AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev) [0 - 1000], param1: redock in (rev) [0 - 1000], param2: max retries [1 - 10]    
@@ -150,7 +150,6 @@ enum Telecommand_t : uint8_t {
     // Development testing only - not used in flight operations
     RPUGOSTANDBY = 184,     // Go to STANDBY mode
     RPUGOMEASURE = 185,     // Send go-measure command to RPU. param0: duration (s), param1: sample rate (s). Sensor enables/batt temp from stored config.
-
     RPUREGENRS41 = 186,     // Trigger an RS41 regeneration cycle on the RPU (requires RPU in MEASURE with RS41 enabled); no params
 
     // Generic instrument commands
