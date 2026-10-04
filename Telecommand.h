@@ -85,15 +85,17 @@ enum Telecommand_t : uint8_t {
     RATSLORASUSPEND = 78,       // Suspend ECU LoRa TX, param0: duration in seconds (uint16); 0 cancels a suspend [0 - 3600]
 
     // LPC Settings
-    SETMODE = 100,       // Expects mode enum
+    // Commands tagged [NOT IMPLEMENTED] are defined but not acted on by
+    // StratoLPC::TCHandler(); tools like Telecommander should exclude them.
+    SETMODE = 100,       // [NOT IMPLEMENTED] Expects mode enum
     SETSAMPLE = 101,     // Number of samples per cycle [1 - 100]
     SETWARMUPTIME = 102, // Time in seconds [1 - 600]
     SETCYCLETIME = 103,  // Time in minutes [1 - 720]
-    GETFILE = 104,       // Requested frame number
-    SETHGBINS = 105,     // Number of bins followed by new bin values
-    SETLGBINS = 106,     // Number of bins followed by new bin values
+    GETFILE = 104,       // [NOT IMPLEMENTED] Requested frame number
+    SETHGBINS = 105,     // [NOT IMPLEMENTED] Number of bins followed by new bin values
+    SETLGBINS = 106,     // [NOT IMPLEMENTED] Number of bins followed by new bin values
     SETLASERTEMP = 107,  // Target laser temp [-20 - 30]
-    SETHKPERIOD = 108,   // Time in minutes [1 - 60]
+    SETHKPERIOD = 108,   // [NOT IMPLEMENTED] Time in minutes [1 - 60]
     SETFLUSH = 109,      // Time in seconds for air flush [1 - 600]
     SETSAMPLEAVG = 110,  // Values to average from PHA [1 - 100]
     // IDs 111-115 are defined in TCMessage.py, but not here
