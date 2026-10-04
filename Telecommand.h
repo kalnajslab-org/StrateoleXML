@@ -99,7 +99,7 @@ enum Telecommand_t : uint8_t {
     SETFLUSH = 109,      // Time in seconds for air flush [1 - 600]
     SETSAMPLEAVG = 110,  // Values to average from PHA [1 - 100]
     // IDs 111-115 are defined in TCMessage.py, but not here
-    SETPHA = 116,        // Pulse height analyzer parameters
+    SETPHA = 116,        // Pulse height analyzer parameters - Advanced Use Only! param0: hi gain threshold [0 - 1023], param1: hi gain offset [0-4091], param2: lo gain offset [0-4091]
     REGENRS41 = 117,     // Initiate an RS41 regeneration
     SETFLOW = 118,       // set the BEMF setpoint for both pumps [5 - 10]
     SETPUMPTEMP = 119,   // set the minimum temperature for the pumps [-40 - 30]
