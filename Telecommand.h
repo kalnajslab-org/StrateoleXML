@@ -99,7 +99,7 @@ enum Telecommand_t : uint8_t {
     SETFLUSH = 109,      // Time in seconds for air flush [1 - 600]
     SETSAMPLEAVG = 110,  // Values to average from PHA [1 - 100]
     // IDs 111-115 are defined in TCMessage.py, but not here
-    SETPHA = 116,        // Pulse height analyzer parameters - Advanced Use Only! param0: hi gain threshold [0 - 1023], param1: hi gain offset [0-4091], param2: lo gain offset [0-4091]
+    SETPHA = 116,        // Pulse height analyzer parameters - Advanced Use Only! param0: hi gain threshold [0 - 1023], param1: hi gain offset [0-4091], param2: lo gain offset [0-4091], Set any param to 0 to leave current value unchanged.
     REGENRS41 = 117,     // Initiate an RS41 regeneration
     SETFLOW = 118,       // set the BEMF setpoint for both pumps [5 - 10]
     SETPUMPTEMP = 119,   // set the minimum temperature for the pumps [-40 - 30]
@@ -144,7 +144,7 @@ enum Telecommand_t : uint8_t {
     // RPU commands and settings
     RPUCONFIG = 180,        // Configure RPU sensor enables. param0: enable ROPC [0 - 1], param1: enable TDLAS [0 - 1], param2: enable TSEN [0 - 1], param3: enable RS41 [0 - 1]
     RPUSTATUSPERIOD = 181,  // Set the period for RPU status reports, in seconds. param0: period in seconds [1 - 86400]
-    RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC) [ -30 - 30]
+    RPUBATTEMP = 182,       // Set RPU battery temperature threshold. param0: temperature (float, degC) [ -30 - 50]. Follow by RPUGOSTANDBY or RPUGOMEASURE to deliver to RPU.
     RPURESET = 183,         // Reboot the RPU via dock serial
 
     // Development testing only - not used in flight operations
