@@ -83,6 +83,7 @@ enum Telecommand_t : uint8_t {
     RATSINFO = 76,              // Send a RATSTEXT TM with firmware version and LoRa config
     RATSSETMOTIONTIMEOUT = 77,  // Set MCB motion timeout, param0: timeout in seconds (uint16) [0 - 300]
     RATSLORASUSPEND = 78,       // Suspend ECU LoRa TX, param0: duration in seconds (uint16); 0 cancels a suspend [0 - 3600]
+    RATSECUSETTIME = 79,        // Send RATS' Zephyr-disciplined time to the ECU (setTimeEpoch); the ECU refuses it once its own GPS has set its clock
 
     // LPC Settings
     // Commands tagged [NOT IMPLEMENTED] are defined but not acted on by
