@@ -89,7 +89,7 @@ enum Telecommand_t : uint8_t {
     // Commands tagged [NOT IMPLEMENTED] are defined but not acted on by
     // StratoLPC::TCHandler(); tools like Telecommander should exclude them.
     SETMODE = 100,       // [NOT IMPLEMENTED] Expects mode enum
-    SETSAMPLE = 101,     // Number of samples per cycle [1 - 100]
+    SETSAMPLE = 101,     // Number of samples per cycle [1 - 1000]
     SETWARMUPTIME = 102, // Time in seconds [1 - 600]
     SETCYCLETIME = 103,  // Time in minutes [1 - 720]
     GETFILE = 104,       // [NOT IMPLEMENTED] Requested frame number
