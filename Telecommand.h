@@ -128,7 +128,7 @@ enum Telecommand_t : uint8_t {
     GETPUSTATUS = 143,          // Request RPU status via dock serial
     PUPOWERON = 144,            // Enable RPU dock power
     PUPOWEROFF = 145,           // Disable RPU dock power
-    PROFILE = 146,              // Execute a profile. param0: profile size (rev) [1 - 1000], param1: dock amount (rev) [0 - 8000], param2: dock overshoot (rev) [1 - 1000], param3: dwell time (s) [1 - 3600], param4: sample rate (s) [1 - 600]
+    PROFILE = 146,              // Execute a profile. param0: profile size (rev) [1 - 8000], param1: dock amount (rev) [0 - 1000], param2: dock overshoot (rev) [1 - 1000], param3: dwell time (s) [1 - 3600], param4: sample rate (s) [1 - 600]
     OFFLOADPUPROFILE = 147,     // Offload stored RPU profile data
     SETPREPROFILETIME = 148,    // Set pre-profile wait time after RPU enters measure mode. param0: time (uint16, seconds) [0 - 600]
     AUTOREDOCKPARAMS = 150,     // Set auto-redock parameters. param0: redock out (rev) [0 - 1000], param1: redock in (rev) [0 - 1000], param2: max retries [1 - 10]    
