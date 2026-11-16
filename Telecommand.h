@@ -124,7 +124,7 @@ enum Telecommand_t : uint8_t {
     // USETIMETRIGGER = 139,    // Use time trigger for autonomous profiles
     // SETTIMETRIGGER = 140,    // Set Unix timestamp for autonomous profile trigger. param0: timestamp (uint32)
     SETDOCKOVERSHOOT = 141,     // Set dock overshoot distance. param0: overshoot (float, revolutions) [1 - 1000]
-    RETRYDOCK = 142,            // Manual redock command. param0: deploy length (rev) [0.01 - 15], param1: retract length (rev) [0 - 100]
+    RETRYDOCK = 142,            // Manual redock command. param0: deploy length (rev) [0.01 - 15], param1: retract length (rev) [0 - 1000]
     GETPUSTATUS = 143,          // Request RPU status via dock serial
     PUPOWERON = 144,            // Enable RPU dock power
     PUPOWEROFF = 145,           // Disable RPU dock power
